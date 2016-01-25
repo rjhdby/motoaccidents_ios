@@ -1,0 +1,524 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8DF3E67F1C5662B000808388 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF3E67E1C5662B000808388 /* main.m */; };
+		8DF3E6821C5662B000808388 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF3E6811C5662B000808388 /* AppDelegate.m */; };
+		8DF3E6851C5662B000808388 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF3E6841C5662B000808388 /* ViewController.m */; };
+		8DF3E6881C5662B000808388 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DF3E6861C5662B000808388 /* Main.storyboard */; };
+		8DF3E68A1C5662B000808388 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8DF3E6891C5662B000808388 /* Assets.xcassets */; };
+		8DF3E68D1C5662B000808388 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8DF3E68B1C5662B000808388 /* LaunchScreen.storyboard */; };
+		8DF3E6981C5662B000808388 /* Moto_Accident_InfoTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF3E6971C5662B000808388 /* Moto_Accident_InfoTests.m */; };
+		8DF3E6A31C5662B000808388 /* Moto_Accident_InfoUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = 8DF3E6A21C5662B000808388 /* Moto_Accident_InfoUITests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		8DF3E6941C5662B000808388 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DF3E6721C5662B000808388 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DF3E6791C5662B000808388;
+			remoteInfo = "Moto Accident Info";
+		};
+		8DF3E69F1C5662B000808388 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 8DF3E6721C5662B000808388 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8DF3E6791C5662B000808388;
+			remoteInfo = "Moto Accident Info";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		8DF3E67A1C5662B000808388 /* Moto Accident Info.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Moto Accident Info.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DF3E67E1C5662B000808388 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		8DF3E6801C5662B000808388 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		8DF3E6811C5662B000808388 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		8DF3E6831C5662B000808388 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		8DF3E6841C5662B000808388 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		8DF3E6871C5662B000808388 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		8DF3E6891C5662B000808388 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8DF3E68C1C5662B000808388 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8DF3E68E1C5662B000808388 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DF3E6931C5662B000808388 /* Moto Accident InfoTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Moto Accident InfoTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DF3E6971C5662B000808388 /* Moto_Accident_InfoTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Moto_Accident_InfoTests.m; sourceTree = "<group>"; };
+		8DF3E6991C5662B000808388 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8DF3E69E1C5662B000808388 /* Moto Accident InfoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Moto Accident InfoUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		8DF3E6A21C5662B000808388 /* Moto_Accident_InfoUITests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Moto_Accident_InfoUITests.m; sourceTree = "<group>"; };
+		8DF3E6A41C5662B000808388 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8DF3E6771C5662B000808388 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DF3E6901C5662B000808388 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DF3E69B1C5662B000808388 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8DF3E6711C5662B000808388 = {
+			isa = PBXGroup;
+			children = (
+				8DF3E67C1C5662B000808388 /* Moto Accident Info */,
+				8DF3E6961C5662B000808388 /* Moto Accident InfoTests */,
+				8DF3E6A11C5662B000808388 /* Moto Accident InfoUITests */,
+				8DF3E67B1C5662B000808388 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8DF3E67B1C5662B000808388 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8DF3E67A1C5662B000808388 /* Moto Accident Info.app */,
+				8DF3E6931C5662B000808388 /* Moto Accident InfoTests.xctest */,
+				8DF3E69E1C5662B000808388 /* Moto Accident InfoUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8DF3E67C1C5662B000808388 /* Moto Accident Info */ = {
+			isa = PBXGroup;
+			children = (
+				8DF3E6801C5662B000808388 /* AppDelegate.h */,
+				8DF3E6811C5662B000808388 /* AppDelegate.m */,
+				8DF3E6831C5662B000808388 /* ViewController.h */,
+				8DF3E6841C5662B000808388 /* ViewController.m */,
+				8DF3E6861C5662B000808388 /* Main.storyboard */,
+				8DF3E6891C5662B000808388 /* Assets.xcassets */,
+				8DF3E68B1C5662B000808388 /* LaunchScreen.storyboard */,
+				8DF3E68E1C5662B000808388 /* Info.plist */,
+				8DF3E67D1C5662B000808388 /* Supporting Files */,
+			);
+			path = "Moto Accident Info";
+			sourceTree = "<group>";
+		};
+		8DF3E67D1C5662B000808388 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				8DF3E67E1C5662B000808388 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		8DF3E6961C5662B000808388 /* Moto Accident InfoTests */ = {
+			isa = PBXGroup;
+			children = (
+				8DF3E6971C5662B000808388 /* Moto_Accident_InfoTests.m */,
+				8DF3E6991C5662B000808388 /* Info.plist */,
+			);
+			path = "Moto Accident InfoTests";
+			sourceTree = "<group>";
+		};
+		8DF3E6A11C5662B000808388 /* Moto Accident InfoUITests */ = {
+			isa = PBXGroup;
+			children = (
+				8DF3E6A21C5662B000808388 /* Moto_Accident_InfoUITests.m */,
+				8DF3E6A41C5662B000808388 /* Info.plist */,
+			);
+			path = "Moto Accident InfoUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8DF3E6791C5662B000808388 /* Moto Accident Info */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DF3E6A71C5662B000808388 /* Build configuration list for PBXNativeTarget "Moto Accident Info" */;
+			buildPhases = (
+				8DF3E6761C5662B000808388 /* Sources */,
+				8DF3E6771C5662B000808388 /* Frameworks */,
+				8DF3E6781C5662B000808388 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Moto Accident Info";
+			productName = "Moto Accident Info";
+			productReference = 8DF3E67A1C5662B000808388 /* Moto Accident Info.app */;
+			productType = "com.apple.product-type.application";
+		};
+		8DF3E6921C5662B000808388 /* Moto Accident InfoTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DF3E6AA1C5662B000808388 /* Build configuration list for PBXNativeTarget "Moto Accident InfoTests" */;
+			buildPhases = (
+				8DF3E68F1C5662B000808388 /* Sources */,
+				8DF3E6901C5662B000808388 /* Frameworks */,
+				8DF3E6911C5662B000808388 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8DF3E6951C5662B000808388 /* PBXTargetDependency */,
+			);
+			name = "Moto Accident InfoTests";
+			productName = "Moto Accident InfoTests";
+			productReference = 8DF3E6931C5662B000808388 /* Moto Accident InfoTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		8DF3E69D1C5662B000808388 /* Moto Accident InfoUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8DF3E6AD1C5662B000808388 /* Build configuration list for PBXNativeTarget "Moto Accident InfoUITests" */;
+			buildPhases = (
+				8DF3E69A1C5662B000808388 /* Sources */,
+				8DF3E69B1C5662B000808388 /* Frameworks */,
+				8DF3E69C1C5662B000808388 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8DF3E6A01C5662B000808388 /* PBXTargetDependency */,
+			);
+			name = "Moto Accident InfoUITests";
+			productName = "Moto Accident InfoUITests";
+			productReference = 8DF3E69E1C5662B000808388 /* Moto Accident InfoUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8DF3E6721C5662B000808388 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0720;
+				ORGANIZATIONNAME = motoAccident;
+				TargetAttributes = {
+					8DF3E6791C5662B000808388 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = AN6984HG2P;
+					};
+					8DF3E6921C5662B000808388 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = AN6984HG2P;
+						TestTargetID = 8DF3E6791C5662B000808388;
+					};
+					8DF3E69D1C5662B000808388 = {
+						CreatedOnToolsVersion = 7.2;
+						DevelopmentTeam = AN6984HG2P;
+						TestTargetID = 8DF3E6791C5662B000808388;
+					};
+				};
+			};
+			buildConfigurationList = 8DF3E6751C5662B000808388 /* Build configuration list for PBXProject "Moto Accident Info" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 8DF3E6711C5662B000808388;
+			productRefGroup = 8DF3E67B1C5662B000808388 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8DF3E6791C5662B000808388 /* Moto Accident Info */,
+				8DF3E6921C5662B000808388 /* Moto Accident InfoTests */,
+				8DF3E69D1C5662B000808388 /* Moto Accident InfoUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		8DF3E6781C5662B000808388 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DF3E68D1C5662B000808388 /* LaunchScreen.storyboard in Resources */,
+				8DF3E68A1C5662B000808388 /* Assets.xcassets in Resources */,
+				8DF3E6881C5662B000808388 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DF3E6911C5662B000808388 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DF3E69C1C5662B000808388 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8DF3E6761C5662B000808388 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DF3E6851C5662B000808388 /* ViewController.m in Sources */,
+				8DF3E6821C5662B000808388 /* AppDelegate.m in Sources */,
+				8DF3E67F1C5662B000808388 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DF3E68F1C5662B000808388 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DF3E6981C5662B000808388 /* Moto_Accident_InfoTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8DF3E69A1C5662B000808388 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8DF3E6A31C5662B000808388 /* Moto_Accident_InfoUITests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8DF3E6951C5662B000808388 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DF3E6791C5662B000808388 /* Moto Accident Info */;
+			targetProxy = 8DF3E6941C5662B000808388 /* PBXContainerItemProxy */;
+		};
+		8DF3E6A01C5662B000808388 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8DF3E6791C5662B000808388 /* Moto Accident Info */;
+			targetProxy = 8DF3E69F1C5662B000808388 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		8DF3E6861C5662B000808388 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8DF3E6871C5662B000808388 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		8DF3E68B1C5662B000808388 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8DF3E68C1C5662B000808388 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		8DF3E6A51C5662B000808388 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8DF3E6A61C5662B000808388 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8DF3E6A81C5662B000808388 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Moto Accident Info/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.motoaccident.Moto-Accident-Info";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		8DF3E6A91C5662B000808388 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = "Moto Accident Info/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.motoaccident.Moto-Accident-Info";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		8DF3E6AB1C5662B000808388 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Moto Accident InfoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.motoaccident.Moto-Accident-InfoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moto Accident Info.app/Moto Accident Info";
+			};
+			name = Debug;
+		};
+		8DF3E6AC1C5662B000808388 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				INFOPLIST_FILE = "Moto Accident InfoTests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.motoaccident.Moto-Accident-InfoTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Moto Accident Info.app/Moto Accident Info";
+			};
+			name = Release;
+		};
+		8DF3E6AE1C5662B000808388 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Moto Accident InfoUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.motoaccident.Moto-Accident-InfoUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Moto Accident Info";
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		8DF3E6AF1C5662B000808388 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				INFOPLIST_FILE = "Moto Accident InfoUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "ru.motoaccident.Moto-Accident-InfoUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = "Moto Accident Info";
+				USES_XCTRUNNER = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8DF3E6751C5662B000808388 /* Build configuration list for PBXProject "Moto Accident Info" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DF3E6A51C5662B000808388 /* Debug */,
+				8DF3E6A61C5662B000808388 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8DF3E6A71C5662B000808388 /* Build configuration list for PBXNativeTarget "Moto Accident Info" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DF3E6A81C5662B000808388 /* Debug */,
+				8DF3E6A91C5662B000808388 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8DF3E6AA1C5662B000808388 /* Build configuration list for PBXNativeTarget "Moto Accident InfoTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DF3E6AB1C5662B000808388 /* Debug */,
+				8DF3E6AC1C5662B000808388 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		8DF3E6AD1C5662B000808388 /* Build configuration list for PBXNativeTarget "Moto Accident InfoUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8DF3E6AE1C5662B000808388 /* Debug */,
+				8DF3E6AF1C5662B000808388 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8DF3E6721C5662B000808388 /* Project object */;
+}
