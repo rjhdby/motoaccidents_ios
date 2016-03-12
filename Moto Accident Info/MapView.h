@@ -16,5 +16,4 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *createAccidentButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *callButton;
 
-- (CLLocation *)getUserLocation;
 @end

@@ -25,6 +25,7 @@ static bool               isUpdated = NO;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.hidesBackButton = YES;
     [self decorate];
 
     _mapView.delegate          = self;
@@ -34,7 +35,6 @@ static bool               isUpdated = NO;
         [_mapView setRegion:currentRegionCenter];
     }
     [self renewMarkers];
-    // Do any additional setup after loading the view.
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -47,20 +47,7 @@ static bool               isUpdated = NO;
     [_callButton setEnabled:[PermissionsControl canCall]];
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 - (void)addMarkerForAccident:(Accident *)accident {
     Marker *marker = [[Marker alloc] init];
     marker.coordinate = CLLocationCoordinate2DMake(accident.location.coordinate.latitude, accident.location.coordinate.longitude);
@@ -74,10 +61,6 @@ static bool               isUpdated = NO;
     Marker     *marker = (Marker *) annotation;
     MarkerView *view   = [[MarkerView alloc] initWithAnnotation:annotation type:marker.type];
     return view;
-}
-
-- (CLLocation *)getUserLocation {
-    return _mapView.userLocation.location;
 }
 
 - (void)renewMarkers {

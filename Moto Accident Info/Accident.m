@@ -16,7 +16,6 @@
 #import "AccidentTools.h"
 #import "LocationManager.h"
 
-
 @implementation Accident
 
 - (instancetype)initWithJSONData:(NSDictionary *)data {

@@ -167,8 +167,8 @@ static NSUserDefaults *settings;
 }
 
 + (void)showFinished:(bool)visible {
-    showHeavy = visible;
-    [settings setBool:showHeavy forKey:@"showFinished"];
+    showFinished = visible;
+    [settings setBool:showFinished forKey:@"showFinished"];
     [settings synchronize];
 }
 

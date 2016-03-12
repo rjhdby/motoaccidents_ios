@@ -24,6 +24,7 @@ static NSArray *visibleAccidents;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.hidesBackButton = YES;
     [_callButton setEnabled:[PermissionsControl canCall]];
     [self redraw];
     [Content update];
@@ -34,15 +35,12 @@ static NSArray *visibleAccidents;
     [super viewDidAppear:animated];
     [self updateData];
     [self redraw];
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     [self revokeLocationUpdateSubscribe];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

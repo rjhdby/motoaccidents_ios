@@ -34,7 +34,7 @@
                                 </variation>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="251" text="Address" textAlignment="natural" lineBreakMode="characterWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iLu-0a-dV4" customClass="AccentLabel">
-                                <rect key="frame" x="8" y="68" width="226" height="20.5"/>
+                                <rect key="frame" x="8" y="59" width="226" height="29.5"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -380,6 +380,7 @@
                             <constraint firstItem="ha2-nE-5TI" firstAttribute="leading" secondItem="Dkc-0R-7bc" secondAttribute="leading" id="gGZ-c2-kTH"/>
                             <constraint firstItem="mXG-VU-EqX" firstAttribute="centerY" secondItem="Dkc-0R-7bc" secondAttribute="centerY" id="gKZ-Ch-R5P"/>
                             <constraint firstItem="n7m-rf-wa0" firstAttribute="bottom" secondItem="iLu-0a-dV4" secondAttribute="bottom" id="gO8-Qy-4vs"/>
+                            <constraint firstItem="iLu-0a-dV4" firstAttribute="top" secondItem="mXG-VU-EqX" secondAttribute="bottom" constant="8" id="h1N-h8-Iit"/>
                             <constraint firstItem="vjk-uK-ZBZ" firstAttribute="top" secondItem="UHB-1K-RcI" secondAttribute="bottom" constant="2" id="iDs-0t-hcV"/>
                             <constraint firstAttribute="trailing" secondItem="Dno-4J-yAJ" secondAttribute="trailing" constant="8" id="iOU-el-DIK"/>
                             <constraint firstAttribute="trailing" secondItem="vir-b8-Gv6" secondAttribute="trailing" id="iiX-Ge-dqR"/>
@@ -397,10 +398,14 @@
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="gKZ-Ch-R5P"/>
-                                <exclude reference="8jf-sg-ZgQ"/>
-                                <exclude reference="D9H-Fu-htK"/>
                                 <exclude reference="EMm-nX-y4B"/>
                                 <exclude reference="Ixa-FC-u3q"/>
+                                <exclude reference="8jf-sg-ZgQ"/>
+                                <exclude reference="D9H-Fu-htK"/>
+                                <exclude reference="rid-A3-gN9"/>
+                                <exclude reference="5hB-cc-Er2"/>
+                                <exclude reference="xBa-f6-bf6"/>
+                                <exclude reference="T0K-ZK-5Lw"/>
                                 <exclude reference="PD9-dt-81J"/>
                                 <exclude reference="bJV-rD-dkS"/>
                                 <exclude reference="c3V-em-IVc"/>
@@ -409,10 +414,6 @@
                                 <exclude reference="W14-bd-8cQ"/>
                                 <exclude reference="gBx-mj-bwB"/>
                                 <exclude reference="syl-Va-OTu"/>
-                                <exclude reference="rid-A3-gN9"/>
-                                <exclude reference="5hB-cc-Er2"/>
-                                <exclude reference="xBa-f6-bf6"/>
-                                <exclude reference="T0K-ZK-5Lw"/>
                                 <exclude reference="2od-9X-BXW"/>
                                 <exclude reference="TNV-bG-mrX"/>
                                 <exclude reference="V7F-Ru-X9r"/>
