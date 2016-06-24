@@ -36,8 +36,8 @@
 }
 
 - (void)authRequired {
-    request[@"l"] = [[UserSettings login] stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
-    request[@"p"] = [[UserSettings password] md5];
+    request[@"l"] = [UserSettings.login stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLFragmentAllowedCharacterSet]];
+    request[@"p"] = [UserSettings.password md5];
 }
 
 - (void)authWithLogin:(NSString *)login password:(NSString *)password {

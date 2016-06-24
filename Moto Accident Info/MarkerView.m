@@ -25,6 +25,10 @@
     return self;
 }
 
+- (void)setAccidentId:(NSString *)newAccId {
+    _accId = newAccId;
+}
+
 - (void)setImageForAccidentType:(enum AccidentType)type {
     NSString *imageName;
     switch (type) {

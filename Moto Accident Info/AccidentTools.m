@@ -10,20 +10,42 @@
 
 }
 + (NSString *)simplifyAddress:(NSString *)input {
-    NSString *result = [input mutableCopy];
-    result = [result stringByReplacingOccurrencesOfString:@"город " withString:@"г." options:NSCaseInsensitiveSearch range:(NSRange) {0, result.length}];
-    result = [result stringByReplacingOccurrencesOfString:@"3-е транспортное кольцо" withString:@"ТТК" options:NSCaseInsensitiveSearch range:(NSRange) {0, result.length}];
-    result = [result stringByReplacingOccurrencesOfString:@"улица" withString:@"ул." options:NSCaseInsensitiveSearch range:(NSRange) {0, result.length}];
-    result = [result stringByReplacingOccurrencesOfString:@"дом " withString:@"д." options:NSCaseInsensitiveSearch range:(NSRange) {0, result.length}];
-    result = [result stringByReplacingOccurrencesOfString:@"шоссе " withString:@"ш." options:NSCaseInsensitiveSearch range:(NSRange) {0, result.length}];
-    result = [result stringByReplacingOccurrencesOfString:@"область " withString:@"обл." options:NSCaseInsensitiveSearch range:(NSRange) {0, result.length}];
-    result = [result stringByReplacingOccurrencesOfString:@"г. москва" withString:@"Москва" options:NSCaseInsensitiveSearch range:(NSRange) {0, result.length}];
-
+    NSString            *result    = [input mutableCopy];
+    NSMutableDictionary *templates = [[NSMutableDictionary alloc] init];
+    templates[@"город "]                                    = @"г.";
+    templates[@"3-е транспортное кольцо"]                   = @"ТТК";
+    templates[@"третье транспортное кольцо"]                = @"ТТК";
+    templates[@"улица"]                                     = @"ул.";
+    templates[@"дом "]                                      = @"д.";
+    templates[@"шоссе"]                                     = @"ш.";
+    templates[@"область"]                                   = @"обл.";
+    templates[@"г. москва"]                                 = @"Москва";
+    templates[@" корпус "]                                  = @"к";
+    templates[@"проспект"]                                  = @"пр-т";
+    templates[@"просп."]                                    = @"пр-т";
+    templates[@"владение "]                                 = @"вл.";
+    templates[@" строение "]                                = @"с";
+    templates[@"километр"]                                  = @"км";
+    templates[@"внешняя"]                                   = @"внеш.";
+    templates[@"внутренняя"]                                = @"внут.";
+    templates[@"проезд"]                                    = @"пр.";
+    templates[@"переулок"]                                  = @"пер.";
+    templates[@"площадь"]                                   = @"пл.";
+    templates[@"московская кольцевая автодорога"]           = @"МКАД";
+    templates[@"московская кольцевая автомобильная дорога"] = @"МКАД";
+    templates[@"московская кольцевая автомобильная дор."]   = @"МКАД";
+    templates[@".,"]                                        = @",";
+    templates[@"  "]                                        = @" ";
+    templates[@"\n"]                                        = @" ";
+    templates[@"поселок"]                                   = @"пос.";
+    for (NSString *key in [templates allKeys]) {
+        result = [result stringByReplacingOccurrencesOfString:key withString:templates[key] options:NSCaseInsensitiveSearch range:(NSRange) {0, result.length}];
+    }
     return result;
 }
 
 + (NSString *)deduplicate:(NSString *)input {
-    NSRegularExpression *regex  = [NSRegularExpression regularExpressionWithPattern:@"(.+)\\s+(\\1)" options:NSRegularExpressionCaseInsensitive error:nil];
+    NSRegularExpression *regex  = [NSRegularExpression regularExpressionWithPattern:@"(.{4,})\\s+(\\1)" options:NSRegularExpressionCaseInsensitive error:nil];
     NSString            *result = [regex stringByReplacingMatchesInString:input options:0 range:NSMakeRange(0, [input length]) withTemplate:@"$1"];
     return result;
 }

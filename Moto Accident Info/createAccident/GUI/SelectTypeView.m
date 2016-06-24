@@ -41,6 +41,11 @@
     [_OtherButton setSelected:[NewAccidentContent accidentType] == AT_OTHER];
     [_StealButton setSelected:[NewAccidentContent accidentType] == AT_STEAL];
 }
+- (IBAction)cancel:(id)sender {
+    UIStoryboard     *createAccStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *initial             = [createAccStoryboard instantiateInitialViewController];
+    [self presentViewController:initial animated:YES completion:nil];
+}
 
 - (IBAction)accidentSelected:(id)sender {
     if (_AccidentButton.selected)return;

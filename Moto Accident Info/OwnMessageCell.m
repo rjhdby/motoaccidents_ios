@@ -29,8 +29,13 @@
 - (void)decorateWith:(Message *)message {
     _timeLabel.text = [AccidentTools formattedAge:message.time];
     NSString *pad = [[NSString string] stringByPaddingToLength:[_timeLabel.text length] + 1 withString:@"\u2002" startingAtIndex:0];
-    _textLabel.text = [NSString stringWithFormat:@"%@%@\u200c", message.text, pad];
+    _textLabel.text  = [NSString stringWithFormat:@"%@%@\u200c", message.text, pad];
     _innerView.image = [[UIImage imageNamed:@"message_own"] stretchableImageWithLeftCapWidth:20 topCapHeight:19];
+    _msgId = [NSString stringWithFormat:@"%@", message.idMsg];
+}
+
+- (NSString *)getId {
+    return _msgId;
 }
 
 

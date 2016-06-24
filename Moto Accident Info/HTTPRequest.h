@@ -12,7 +12,7 @@
 @class HTTPResponse;
 
 @interface HTTPRequest : NSObject {
-    NSDictionary *args;
+    NSDictionary  *args;
 }
 - (instancetype)initWithRequest:(PreparedRequest *)request;
 

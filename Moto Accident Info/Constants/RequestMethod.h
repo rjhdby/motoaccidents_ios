@@ -7,7 +7,9 @@ enum RequestMethod {
     R_AUTH,
     R_LIST,
     R_NEW_ACCIDENT,
-    R_NEW_MESSAGE
+    R_NEW_MESSAGE,
+    R_REGISTER_APNS,
+    R_ACCIDENT
 };
 
 #import <Foundation/Foundation.h>

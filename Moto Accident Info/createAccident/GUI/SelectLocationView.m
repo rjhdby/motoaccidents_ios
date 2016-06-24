@@ -17,7 +17,6 @@
 
 @implementation SelectLocationView
 
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     [NewAccidentContent cleanUp];
@@ -77,8 +76,14 @@
     [NewAccidentContent setLocation:[[CLLocation alloc] initWithLatitude:_mapView.centerCoordinate.latitude longitude:_mapView.centerCoordinate.longitude]];
 }
 
-- (IBAction)nextButtonPressed:(id)sender {
+- (IBAction)cancel:(id)sender {
+    UIStoryboard     *createAccStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *initial             = [createAccStoryboard instantiateInitialViewController];
+    [self presentViewController:initial animated:YES completion:nil];
+}
 
+- (IBAction)nextButtonPressed:(id)sender {
+    [self addWaiterScreen];
     CLGeocoder *geoCoder = [[CLGeocoder alloc] init];
     [geoCoder reverseGeocodeLocation:[NewAccidentContent location] completionHandler:^(NSArray *placeMarks, NSError *error) {
         NSString *address;
@@ -89,11 +94,22 @@
             address = [NSString stringWithFormat:@"%@, %@", placeMark.locality, placeMark.name];
         }
         [NewAccidentContent setAddress:address];
+        [self removeWaiterScreen];
         [self performSegueWithIdentifier:@"toTypeSelect" sender:nil];
     }];
 }
 
 - (IBAction)toUserPressed:(id)sender {
     _mapView.userTrackingMode = MKUserTrackingModeFollow;
+}
+
+- (void)addWaiterScreen {
+    [_nextButton setEnabled:NO];
+    _nextButton.titleLabel.text = @"Ищем адрес";
+}
+
+- (void)removeWaiterScreen {
+    [_nextButton setEnabled:YES];
+    _nextButton.titleLabel.text = @"Далее";
 }
 @end

@@ -7,8 +7,9 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CoreViewController.h"
 
-@interface SettingsViewController : UIViewController
+@interface SettingsViewController : CoreViewController <UITextFieldDelegate>
 @property (strong, nonatomic) IBOutlet UITextField *alertRadius;
 @property (strong, nonatomic) IBOutlet UITextField *visibleRadius;
 @property (strong, nonatomic) IBOutlet UISwitch *showAccidents;
@@ -18,5 +19,11 @@
 @property (strong, nonatomic) IBOutlet UISwitch *showHeavy;
 @property (strong, nonatomic) IBOutlet UITextField *maxAge;
 @property (strong, nonatomic) IBOutlet UISwitch *finished;
+@property (strong, nonatomic) IBOutlet UIButton *signOut;
+@property (strong, nonatomic) IBOutlet UISwitch *alertAccidents;
+@property (strong, nonatomic) IBOutlet UISwitch *alertBreaks;
+@property (strong, nonatomic) IBOutlet UISwitch *alertSteals;
+@property (strong, nonatomic) IBOutlet UISwitch *alertOther;
+@property (strong, nonatomic) IBOutlet UISwitch *alertHeavy;
 
 @end

@@ -8,9 +8,10 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ConfirmView : UIViewController
+@interface ConfirmView : UIViewController <UITextViewDelegate>
 @property (strong, nonatomic) IBOutlet UITextView *address;
 @property (strong, nonatomic) IBOutlet UITextView *text;
 @property (strong, nonatomic) IBOutlet UISwitch *statSwitch;
+@property (strong, nonatomic) IBOutlet UIButton *closeKeyboard;
 
 @end

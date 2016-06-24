@@ -19,6 +19,7 @@ static NSMutableDictionary *accidents;
 static NSMutableDictionary *readComments;
 
 static NSString *readCommentsPath;
+static int      toDetails = 0;
 
 + (void)setup {
     NSArray  *paths              = NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES);
@@ -29,13 +30,25 @@ static NSString *readCommentsPath;
 }
 
 + (void)update {
-    PreparedRequest *request = [[PreparedRequest alloc] initWithMethod:R_LIST];
+    PreparedRequest *request = [[PreparedRequest alloc] initWithMethod:R_LIST async:YES];
     //TODO Use settings and real location
-    [request add:@"lon" value:@"37.62273406982422"];
-    [request add:@"lat" value:@"55.752296447753906"];
-    [request add:@"h" value:[NSString stringWithFormat:@"%i", [UserSettings maxAge]]];
+    [request add:@"h" value:[NSString stringWithFormat:@"%i", UserSettings.maxAge]];
     if ([User isAuthorized]) {
-        [request add:@"l" value:[UserSettings login]];
+        [request add:@"l" value:UserSettings.login];
+    }
+    HTTPResponse *response = [[[HTTPRequest alloc] initWithRequest:request] execute];
+    if ([response hasError]) {
+        //TODO Popup message
+    } else {
+        [self updateContentWithJSONData:[response response]];
+    }
+}
+
++ (void)updateAccident:(NSString *)accId {
+    PreparedRequest *request = [[PreparedRequest alloc] initWithMethod:R_ACCIDENT];
+    [request add:@"id" value:accId];
+    if ([User isAuthorized]) {
+        [request add:@"l" value:UserSettings.login];
     }
     HTTPResponse *response = [[[HTTPRequest alloc] initWithRequest:request] execute];
     if ([response hasError]) {
@@ -100,5 +113,13 @@ static NSString *readCommentsPath;
     if ([accident.messages count] == 0)return NO;
     if (!readComments[[NSString stringWithFormat:@"%i", accident.idAcc]])return YES;
     return [accident maxMessageId] > [readComments[[NSString stringWithFormat:@"%i", accident.idAcc]] intValue];
+}
+
++ (int)toDetails {
+    return toDetails;
+}
+
++ (void)toDetails:(int)accId {
+    toDetails = accId;
 }
 @end

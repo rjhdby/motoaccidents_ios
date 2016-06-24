@@ -10,8 +10,11 @@
 #import "LocationManager.h"
 #import "DefaultDecorator.h"
 #import "User.h"
-#import "UserSettings.h"
 #import "Content.h"
+#import "APNS.h"
+#import "Accident.h"
+#import "UserSettings.h"
+#import "AccidentType.h"
 
 @interface AppDelegate ()
 
@@ -25,31 +28,81 @@
     [[LocationManager instance] setBest];
     [DefaultDecorator setup];
     [Content setup];
+    if ([application respondsToSelector:@selector(isRegisteredForRemoteNotifications)]) {
+        // iOS 8 Notifications
+        [application registerUserNotificationSettings:[UIUserNotificationSettings settingsForTypes:(UIUserNotificationTypeSound | UIUserNotificationTypeAlert | UIUserNotificationTypeBadge) categories:nil]];
+        [application registerForRemoteNotifications];
+    }
+    else {
+        // iOS < 8 Notifications
+#pragma clang diagnostic push
+#pragma clang diagnostic ignored "-Wdeprecated-declarations"
+        [application registerForRemoteNotificationTypes:(UIRemoteNotificationTypeBadge | UIRemoteNotificationTypeAlert | UIRemoteNotificationTypeSound)];
+#pragma clang diagnostic pop
+    }
+    NSLog(@"%@", launchOptions);
     return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application {
-    // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-    // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     [[LocationManager instance] setCoarse];
-    // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
-    // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
 }
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
-    // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
 }
 
 - (void)applicationDidBecomeActive:(UIApplication *)application {
     [[LocationManager instance] setBest];
-    // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 }
 
 - (void)applicationWillTerminate:(UIApplication *)application {
-    // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+- (void)application:(UIApplication *)application didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken {
+    [APNS tokenString:deviceToken];
+    [APNS register];
+    NSLog(@"Did Register for Remote Notifications with response (%@)", deviceToken);
+}
+
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    NSLog(@"Did Fail to Register for Remote Notifications");
+    NSLog(@"%@, %@", error, error.localizedDescription);
+
+}
+
+- (void)application:(UIApplication *)application didReceiveLocalNotification:(UILocalNotification *)notification {
+    if (notification.userInfo[@"id"]) {
+        [Content toDetails:[notification.userInfo[@"id"] intValue]];
+    }
+}
+
+- (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult result))completionHandler {
+    NSLog(@"%@", userInfo);
+    
+    NSString *id =  [userInfo[@"id"] stringValue];
+    NSLog(@"id = %@", id);
+    
+    [Content updateAccident:id];
+    Accident *acc = [Content getById:id];
+    if ([acc willAlert]) {
+        if ([[UIApplication sharedApplication] applicationState] == UIApplicationStateBackground) {
+            [[UIApplication sharedApplication] setApplicationIconBadgeNumber:[[UIApplication sharedApplication] applicationIconBadgeNumber] + 1];
+            UILocalNotification *localNotification = [[UILocalNotification alloc] init];
+            localNotification.fireDate         = [[[NSDate alloc] init] dateByAddingTimeInterval:1];
+            localNotification.alertAction      = [AccidentType string:acc.type];
+            localNotification.alertBody        = acc.address;
+            localNotification.alertLaunchImage = @"logo";
+            localNotification.soundName        = UILocalNotificationDefaultSoundName;
+            NSDictionary *infoDict = @{@"id" : [NSString stringWithFormat:@"%i", acc.idAcc]};
+            localNotification.userInfo = infoDict;
+            [[UIApplication sharedApplication] scheduleLocalNotification:localNotification];
+        }
+    }
+    
+    completionHandler(UIBackgroundFetchResultNewData);
+}
 @end

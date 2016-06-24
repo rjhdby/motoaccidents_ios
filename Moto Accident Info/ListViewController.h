@@ -9,11 +9,12 @@
 #import <UIKit/UIKit.h>
 #import "MainView.h"
 #import "LocationUpdateSubscriber.h"
+#import "CoreViewController.h"
 
-@interface ListViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, LocationUpdateSubscriber>
+@interface ListViewController : CoreViewController <UITableViewDataSource, UITableViewDelegate, LocationUpdateSubscriber>
 @property(strong, nonatomic) IBOutlet UITableView     *ListOfAccidentsTable;
 @property(strong, nonatomic) IBOutlet UIBarButtonItem *createAccidentButton;
 @property(strong, nonatomic) IBOutlet UIBarButtonItem *callButton;
-
+@property (strong, nonatomic) IBOutlet UITableView *listView;
 
 @end

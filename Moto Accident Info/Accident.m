@@ -110,16 +110,33 @@
     return (double) [[[LocationManager instance] current] distanceFromLocation:_location];
 }
 
+- (Message *)getMessageById:(NSString *)msgId {
+    for (Message *message in _messages) {
+        if ([message.idMsg isEqual:@(msgId.intValue)])return message;
+    }
+    return nil;
+}
+
 - (bool)isVisible {
     if (_status == AS_HIDDEN && ![User isModerator])return NO;
-    if (_status == AS_ENDED && ![UserSettings showFinished])return NO;
-    if (_timestamp + [UserSettings maxAge] * 3600 < [[NSDate date] timeIntervalSince1970])return NO;
-    if ((_damage == MS_LETHAL || _damage == MS_HEAVY) && ![UserSettings showHeavy])return NO;
-    if (_type == AT_BREAK && ![UserSettings showBreaks])return NO;
-    if ([self isAccident] && ![UserSettings showAccidents])return NO;
-    if (_type == AT_STEAL && ![UserSettings showSteals])return NO;
-    if (_type == AT_OTHER && ![UserSettings showOthers])return NO;
-    return [self distanceFromUser] / 1000 <= [UserSettings showRadius];
+    if (_status == AS_ENDED && !UserSettings.showFinished)return NO;
+    if (_timestamp + UserSettings.maxAge * 3600 < [[NSDate date] timeIntervalSince1970])return NO;
+    if ((_damage == MS_LETHAL || _damage == MS_HEAVY) && !UserSettings.showHeavy)return NO;
+    if (_type == AT_BREAK && !UserSettings.showBreaks)return NO;
+    if ([self isAccident] && !UserSettings.showAccidents)return NO;
+    if (_type == AT_STEAL && !UserSettings.showSteals)return NO;
+    if (_type == AT_OTHER && !UserSettings.showOthers)return NO;
+    return [self distanceFromUser] / 1000 <= UserSettings.showRadius;
+}
+
+- (bool)willAlert {
+    if (_status == AS_HIDDEN && ![User isModerator])return NO;
+    if ((_damage == MS_LETHAL || _damage == MS_HEAVY) && !UserSettings.alertHeavy)return NO;
+    if (_type == AT_BREAK && !UserSettings.alertBreaks)return NO;
+    if ([self isAccident] && !UserSettings.alertAccidents)return NO;
+    if (_type == AT_STEAL && !UserSettings.alertSteals)return NO;
+    if (_type == AT_OTHER && !UserSettings.alertOthers)return NO;
+    return [self distanceFromUser] / 1000 <= UserSettings.alertRadius;
 }
 
 - (bool)isAccident {

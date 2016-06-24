@@ -1,13 +1,13 @@
 //
-//  FootnoteLabel.h
+//  CustomTextView.h
 //  Moto Accident Info
 //
-//  Created by Громов Андрей on 03.03.16.
+//  Created by Громов Андрей on 23.03.16.
 //  Copyright © 2016 motoAccident. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 
-@interface FootnoteLabel : UILabel
+@interface CustomTextView : UITextView
 
 @end

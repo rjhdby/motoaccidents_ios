@@ -30,6 +30,11 @@
     [_tireButton setSelected:[NewAccidentContent damage] == BS_TIRE];
     [_otherButton setSelected:[NewAccidentContent damage] == BS_OTHER];
 }
+- (IBAction)cancel:(id)sender {
+    UIStoryboard     *createAccStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *initial             = [createAccStoryboard instantiateInitialViewController];
+    [self presentViewController:initial animated:YES completion:nil];
+}
 
 - (IBAction)toolsSelected:(id)sender {
     [NewAccidentContent setDamage:BS_TOOLS];

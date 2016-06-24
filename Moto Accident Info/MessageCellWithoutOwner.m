@@ -31,6 +31,12 @@
     NSString *pad = [[NSString string] stringByPaddingToLength:[_timeLabel.text length]*2 withString:@"\u2002" startingAtIndex:0];
     _textLabel.text  = [NSString stringWithFormat:@"%@%@\u200c", message.text, pad];
     _innerView.image = [[UIImage imageNamed:@"message"] stretchableImageWithLeftCapWidth:24 topCapHeight:19];
+    _msgId = [NSString stringWithFormat:@"%@", message.idMsg];
 }
+
+- (NSString *)getId {
+    return _msgId;
+}
+
 
 @end

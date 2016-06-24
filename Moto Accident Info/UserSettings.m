@@ -6,56 +6,56 @@
 //  Copyright © 2016 motoAccident. All rights reserved.
 //
 
+#import <CoreLocation/CoreLocation.h>
 #import "UserSettings.h"
 
 @implementation UserSettings
 
-int const    ALERT_RADIUS      = 10;
-int const    SHOW_RADIUS       = 50;
-int const    MAX_AGE           = 12;
 double const DEFAULT_LATITUDE  = 55.75229644;
 double const DEFAULT_LONGITUDE = 37.62273406;
-bool const SHOW_ACCIDENTS = true;
-bool const SHOW_BREAKS    = true;
-bool const SHOW_STEALS    = true;
-bool const SHOW_OTHERS    = true;
-bool const SHOW_HEAVY     = true;
-bool const SHOW_FINISHED  = true;
 
-static int    alertRadius;
-static int    showRadius;
-static int    maxAge;
-static double lon;
-static double lat;
-static bool   showAccidents;
-static bool   showBreaks;
-static bool   showSteals;
-static bool   showOthers;
-static bool   showHeavy;
-static bool   showFinished;
-
-static bool     anonymous;
-static NSString *login;
-static NSString *password;
-
-static NSUserDefaults *settings;
+static int        alertRadius;
+static int        showRadius;
+static int        maxAge;
+static bool       showAccidents;
+static bool       showBreaks;
+static bool       showSteals;
+static bool       showOthers;
+static bool       showHeavy;
+static bool       alertAccidents;
+static bool       alertBreaks;
+static bool       alertSteals;
+static bool       alertOthers;
+static bool       alertHeavy;
+static bool       showFinished;
+static bool       anonymous;
+static NSString   *login;
+static NSString   *password;
+static CLLocation *location;
 
 + (void)setup {
-    settings      = [NSUserDefaults standardUserDefaults];
-    alertRadius   = [settings valueForKey:@"alertRadius"] ? [settings integerForKey:@"alertRadius"] : ALERT_RADIUS;
-    showRadius    = [settings valueForKey:@"showRadius"] ? [settings integerForKey:@"showRadius"] : SHOW_RADIUS;
-    maxAge        = [settings valueForKey:@"maxAge"] ? [settings integerForKey:@"maxAge"] : MAX_AGE;
-    lat           = [settings valueForKey:@"lat"] ? [settings integerForKey:@"lat"] : DEFAULT_LATITUDE;
-    lon           = [settings valueForKey:@"lon"] ? [settings integerForKey:@"lon"] : DEFAULT_LONGITUDE;
-    showAccidents = [settings valueForKey:@"showAccidents"] ? [settings boolForKey:@"showAccidents"] : SHOW_ACCIDENTS;
-    showBreaks    = [settings valueForKey:@"showBreaks"] ? [settings boolForKey:@"showBreaks"] : SHOW_BREAKS;
-    showSteals    = [settings valueForKey:@"showSteals"] ? [settings boolForKey:@"showSteals"] : SHOW_STEALS;
-    showOthers    = [settings valueForKey:@"showOthers"] ? [settings boolForKey:@"showOthers"] : SHOW_OTHERS;
-    showHeavy     = [settings valueForKey:@"showHeavy"] ? [settings boolForKey:@"showHeavy"] : SHOW_HEAVY;
-    anonymous     = [settings valueForKey:@"anonymous"] ? [settings boolForKey:@"anonymous"] : NO;
-    showFinished  = [settings valueForKey:@"showFinished"] ? [settings boolForKey:@"showFinished"] : SHOW_FINISHED;
-    login         = [settings valueForKey:@"login"] ? [settings stringForKey:@"login"] : @"";
-    password      = [settings valueForKey:@"password"] ? [settings stringForKey:@"password"] : @"";
+    alertRadius    = [UserSettings getInt:@"alertRadius" defaultValue:10];
+    showRadius     = [UserSettings getInt:@"showRadius" defaultValue:50];
+    maxAge         = [UserSettings getInt:@"maxAge" defaultValue:12];
+    showAccidents  = [UserSettings getBool:@"showAccidents" defaultValue:YES];
+    showBreaks     = [UserSettings getBool:@"showBreaks" defaultValue:YES];
+    showSteals     = [UserSettings getBool:@"showSteals" defaultValue:YES];
+    showOthers     = [UserSettings getBool:@"showOthers" defaultValue:YES];
+    showHeavy      = [UserSettings getBool:@"showHeavy" defaultValue:YES];
+    alertAccidents = [UserSettings getBool:@"alertAccidents" defaultValue:YES];
+    alertBreaks    = [UserSettings getBool:@"alertBreaks" defaultValue:YES];
+    alertSteals    = [UserSettings getBool:@"alertSteals" defaultValue:YES];
+    alertOthers    = [UserSettings getBool:@"alertOthers" defaultValue:YES];
+    alertHeavy     = [UserSettings getBool:@"alertHeavy" defaultValue:YES];
+    showFinished   = [UserSettings getBool:@"showFinished" defaultValue:YES];
+    anonymous      = [UserSettings getBool:@"anonymous" defaultValue:NO];
+    login          = [UserSettings getString:@"login" defaultValue:@""];
+    password       = [UserSettings getString:@"password" defaultValue:@""];
+    location       = [UserSettings getLocation];
+}
+
++ (CLLocation *)location {
+    return location;
 }
 
 + (int)alertRadius {
@@ -68,6 +68,26 @@ static NSUserDefaults *settings;
 
 + (int)maxAge {
     return maxAge;
+}
+
++ (bool)alertAccidents {
+    return alertAccidents;
+}
+
++ (bool)alertBreaks {
+    return alertBreaks;
+}
+
++ (bool)alertSteals {
+    return alertSteals;
+}
+
++ (bool)alertOthers {
+    return alertOthers;
+}
+
++ (bool)alertHeavy {
+    return alertHeavy;
 }
 
 + (bool)showAccidents {
@@ -106,95 +126,138 @@ static NSUserDefaults *settings;
     return password;
 }
 
-+ (double)lat {
-    return lat;
+//- setters ----------------------------------------------
++ (void)alertRadius:(int)value {
+    alertRadius = value;
+    [UserSettings setInt:@"alertRadius" value:value];
 }
 
-+ (double)lon {
-    return lon;
++ (void)showRadius:(int)value {
+    showRadius = value;
+    [UserSettings setInt:@"showRadius" value:value];
 }
 
-+ (CLLocation *)location {
++ (void)maxAge:(int)value {
+    maxAge = value;
+    [UserSettings setInt:@"maxAge" value:value];
+}
+
++ (void)showAccidents:(bool)value {
+    showAccidents = value;
+    [UserSettings setBool:@"showAccidents" value:value];
+}
+
++ (void)showBreaks:(bool)value {
+    showBreaks = value;
+    [UserSettings setBool:@"showBreaks" value:value];
+}
+
++ (void)showSteals:(bool)value {
+    showSteals = value;
+    [UserSettings setBool:@"showSteals" value:value];
+}
+
++ (void)showOthers:(bool)value {
+    showOthers = value;
+    [UserSettings setBool:@"showOthers" value:value];
+}
+
++ (void)showHeavy:(bool)value {
+    showHeavy = value;
+    [UserSettings setBool:@"showHeavy" value:value];
+}
+
++ (void)showFinished:(bool)value {
+    showFinished = value;
+    [UserSettings setBool:@"showFinished" value:value];
+}
+
++ (void)alertAccidents:(bool)value {
+    alertAccidents = value;
+    [UserSettings setBool:@"alertAccidents" value:value];
+}
+
++ (void)alertBreaks:(bool)value {
+    alertBreaks = value;
+    [UserSettings setBool:@"alertBreaks" value:value];
+}
+
++ (void)alertSteals:(bool)value {
+    alertSteals = value;
+    [UserSettings setBool:@"alertSteals" value:value];
+}
+
++ (void)alertOthers:(bool)value {
+    alertOthers = value;
+    [UserSettings setBool:@"alertOthers" value:value];
+}
+
++ (void)alertHeavy:(bool)value {
+    alertHeavy = value;
+    [UserSettings setBool:@"alertHeavy" value:value];
+}
+
++ (void)anonymous:(bool)value {
+    anonymous = value;
+    [UserSettings setBool:@"anonymous" value:value];
+}
+
++ (void)login:(NSString *)value {
+    login = value;
+    [UserSettings setString:@"login" value:value];
+}
+
++ (void)password:(NSString *)value {
+    password = value;
+    [UserSettings setString:@"password" value:value];
+}
+
++ (void)location:(CLLocation *)value {
+    [UserSettings setDouble:@"lat" value:location.coordinate.latitude];
+    [UserSettings setDouble:@"lon" value:location.coordinate.longitude];
+    location = value;
+}
+
+//- internal ----------------------------------------------
++ (int)getInt:(NSString *)key defaultValue:(int)defaultValue {
+    return [[NSUserDefaults standardUserDefaults] valueForKey:key] ? [[NSUserDefaults standardUserDefaults] integerForKey:key] : defaultValue;
+}
+
++ (double)getDouble:(NSString *)key defaultValue:(double)defaultValue {
+    return [[NSUserDefaults standardUserDefaults] valueForKey:key] ? [[NSUserDefaults standardUserDefaults] doubleForKey:key] : defaultValue;
+}
+
++ (CLLocation *)getLocation {
+    double lat = [UserSettings getDouble:@"lat" defaultValue:DEFAULT_LATITUDE];
+    double lon = [UserSettings getDouble:@"lon" defaultValue:DEFAULT_LONGITUDE];
     return [[CLLocation alloc] initWithLatitude:lat longitude:lon];
 }
 
-+ (void)alertRadius:(int)radius {
-    alertRadius = radius;
-    [settings setInteger:alertRadius forKey:@"alertRadius"];
-    [settings synchronize];
++ (bool)getBool:(NSString *)key defaultValue:(bool)defaultValue {
+    return [[NSUserDefaults standardUserDefaults] valueForKey:key] ? [[NSUserDefaults standardUserDefaults] boolForKey:key] : defaultValue;
 }
 
-+ (void)showRadius:(int)radius {
-    showRadius = radius;
-    [settings setInteger:showRadius forKey:@"showRadius"];
-    [settings synchronize];
++ (NSString *)getString:(NSString *)key defaultValue:(NSString *)defaultValue {
+    return [[NSUserDefaults standardUserDefaults] valueForKey:key] ? [[NSUserDefaults standardUserDefaults] stringForKey:key] : defaultValue;
 }
 
-+ (void)maxAge:(int)age {
-    maxAge = age;
-    [settings setInteger:maxAge forKey:@"maxAge"];
-    [settings synchronize];
++ (void)setInt:(NSString *)key value:(int)value {
+    [[NSUserDefaults standardUserDefaults] setInteger:value forKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-+ (void)showAccidents:(bool)visible {
-    showAccidents = visible;
-    [settings setBool:showAccidents forKey:@"showAccidents"];
-    [settings synchronize];
++ (void)setBool:(NSString *)key value:(bool)value {
+    [[NSUserDefaults standardUserDefaults] setBool:value forKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-+ (void)showBreaks:(bool)visible {
-    showBreaks = visible;
-    [settings setBool:showBreaks forKey:@"showBreaks"];
-    [settings synchronize];
++ (void)setString:(NSString *)key value:(NSObject *)value {
+    [[NSUserDefaults standardUserDefaults] setObject:value forKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 
-+ (void)showSteals:(bool)visible {
-    showSteals = visible;
-    [settings setBool:showSteals forKey:@"showSteals"];
-    [settings synchronize];
-}
-
-+ (void)showOthers:(bool)visible {
-    showOthers = visible;
-    [settings setBool:showOthers forKey:@"showOthers"];
-    [settings synchronize];
-}
-
-+ (void)showHeavy:(bool)visible {
-    showHeavy = visible;
-    [settings setBool:showHeavy forKey:@"showHeavy"];
-    [settings synchronize];
-}
-
-+ (void)showFinished:(bool)visible {
-    showFinished = visible;
-    [settings setBool:showFinished forKey:@"showFinished"];
-    [settings synchronize];
-}
-
-+ (void)anonymous:(bool)newAnonymous {
-    anonymous = newAnonymous;
-    [settings setBool:anonymous forKey:@"anonymous"];
-    [settings synchronize];
-}
-
-+ (void)login:(NSString *)newLogin {
-    login = newLogin;
-    [settings setObject:login forKey:@"login"];
-    [settings synchronize];
-}
-
-+ (void)password:(NSString *)newPassword {
-    password = newPassword;
-    [settings setObject:password forKey:@"password"];
-    [settings synchronize];
-}
-
-+ (void)location:(CLLocation *)location {
-    lat = location.coordinate.latitude;
-    lon = location.coordinate.longitude;
-    [settings setDouble:location.coordinate.latitude forKey:@"lat"];
-    [settings setDouble:location.coordinate.longitude forKey:@"lon"];
-    [settings synchronize];
++ (void)setDouble:(NSString *)key value:(double)value {
+    [[NSUserDefaults standardUserDefaults] setDouble:value forKey:key];
+    [[NSUserDefaults standardUserDefaults] synchronize];
 }
 @end

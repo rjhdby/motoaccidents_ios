@@ -10,8 +10,11 @@
 #import "AccidentType.h"
 
 @interface MarkerView : MKAnnotationView
+@property(strong, nonatomic) NSString * accId;
 
 - (instancetype)initWithAnnotation:(id <MKAnnotation>)annotation type:(enum AccidentType)type;
+
+- (void)setAccidentId:(NSString *)newAccId;
 
 - (void)setImageForAccidentType:(enum AccidentType)type;
 @end

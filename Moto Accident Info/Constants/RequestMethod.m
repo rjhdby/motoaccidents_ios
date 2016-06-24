@@ -20,6 +20,10 @@
         return @"acc";
     } else if (method == R_NEW_MESSAGE) {
         return @"comment";
+    } else if (method == R_REGISTER_APNS) {
+        return @"apns";
+    } else if (method == R_ACCIDENT) {
+        return @"getAccident";
     } else {
         return @"wrong";
     }

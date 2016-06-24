@@ -11,5 +11,6 @@
 
 @interface SelectLocationView : UIViewController <MKMapViewDelegate>
 @property(strong, nonatomic) IBOutlet MKMapView *mapView;
+@property (strong, nonatomic) IBOutlet UIButton *nextButton;
 
 @end

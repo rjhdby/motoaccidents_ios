@@ -11,31 +11,23 @@
 #import "HTTPRequest.h"
 #import "HTTPResponse.h"
 #import "UserSettings.h"
+#import "APNS.h"
 
 @implementation User
 
 static enum Role role   = ROLE_UNAUTHORIZED;
 static int       userId = 0;
 
-//- (instancetype)init {
-//    if ([UserSettings anonymous]) {
-//        role = ROLE_ANONYMOUS;
-//    } else if (![[UserSettings login] isEqualToString:@""] && ![[UserSettings password] isEqualToString:@""]) {
-//        [User auth];
-//    }
-//    return self;
-//}
-
 + (void)setup {
-    if ([UserSettings anonymous]) {
+    if (UserSettings.anonymous) {
         role = ROLE_ANONYMOUS;
-    } else if (![[UserSettings login] isEqualToString:@""] && ![[UserSettings password] isEqualToString:@""]) {
+    } else if (![UserSettings.login isEqualToString:@""] && ![UserSettings.password isEqualToString:@""]) {
         [User auth];
     }
 }
 
 + (void)auth {
-    [self authWithLogin:[UserSettings login] password:[UserSettings password]];
+    [self authWithLogin:UserSettings.login password:UserSettings.password];
 }
 
 + (void)authWithLogin:(NSString *)login password:(NSString *)password {
@@ -47,6 +39,15 @@ static int       userId = 0;
     userId = [[response response][@"id"] intValue];
     [UserSettings login:login];
     [UserSettings password:password];
+    [APNS register];
+}
+
++ (void)signOut {
+    role   = ROLE_UNAUTHORIZED;
+    userId = 0;
+    [UserSettings login:@""];
+    [UserSettings password:@""];
+    [UserSettings anonymous:NO];
 }
 
 + (enum Role)role {
@@ -62,12 +63,16 @@ static int       userId = 0;
 }
 
 + (bool)isAuthorized {
-    return role != ROLE_UNAUTHORIZED;
+    return !(role == ROLE_UNAUTHORIZED || role == ROLE_ANONYMOUS);
 }
 
 + (void)setAnonymousForever {
     role = ROLE_ANONYMOUS;
     [UserSettings anonymous:YES];
+}
+
++ (bool)isAnonymousForever {
+    return UserSettings.anonymous;
 }
 
 + (void)setAnonymous {

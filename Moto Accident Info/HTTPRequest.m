@@ -51,6 +51,7 @@ bool async;
     }
 }
 
+
 - (NSDictionary *)syncRequest {
     NSMutableURLRequest *request =
                                 [NSMutableURLRequest
@@ -66,8 +67,8 @@ bool async;
     NSData        *jsonData     = [[self decodeResponse:response] dataUsingEncoding:NSUTF8StringEncoding];
     NSError       *jsonError;
     NSDictionary  *dict         = [NSJSONSerialization JSONObjectWithData:jsonData options:NSJSONReadingAllowFragments error:&jsonError];
-    NSLog(@"%@", [self prepareURL]);
-    NSLog(@"%@", dict);
+   // NSLog(@"%@", [self prepareURL]);
+   // NSLog(@"%@", dict);
     return dict;
 }
 

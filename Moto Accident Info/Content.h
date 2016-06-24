@@ -16,6 +16,8 @@
 
 + (void)update;
 
++ (void)updateAccident:(NSString *)accId;
+
 + (void)updateContentWithJSONData:(NSDictionary *)data;
 
 + (NSArray *)visibleAccidents;
@@ -27,4 +29,8 @@
 + (void)setLastReadForAccidentId:(int)idAcc;
 
 + (bool)hasUndeadForAccident:(Accident *)accident;
+
++ (int)toDetails;
+
++ (void)toDetails:(int)accId;
 @end

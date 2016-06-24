@@ -25,11 +25,12 @@ static NSMutableDictionary *subscribers;
 }
 
 - (id)init {
-    self = [super init];
     if (self != nil) {
+        self             = [super init];
+        _current         = UserSettings.location;
         _locationManager = [[CLLocationManager alloc] init];
+        subscribers      = [[NSMutableDictionary alloc] init];
         _locationManager.delegate = self;
-        subscribers = [[NSMutableDictionary alloc] init];
     }
     return self;
 }
@@ -52,12 +53,12 @@ static NSMutableDictionary *subscribers;
 }
 
 - (CLLocation *)current {
-    if (![CLLocationManager locationServicesEnabled])return [UserSettings location];
+    if (![CLLocationManager locationServicesEnabled]) return UserSettings.location;
     return _current;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {
-    _current = [UserSettings location];
+    _current = UserSettings.location;
 }
 
 - (void)locationManager:(CLLocationManager *)manager didUpdateLocations:(NSArray<CLLocation *> *)locations {

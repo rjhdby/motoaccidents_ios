@@ -15,11 +15,63 @@
 @end
 
 @implementation AuthViewController
+UIAlertView *userNotFountAlertView;
+UIAlertView *enterWithoutLogin;
+UIAlertView *registrationAlertView;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.hidesBackButton = YES;
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardWillHide) name:UIKeyboardWillHideNotification object:nil];
+
+    [_loginField setDelegate:self];
+    [_passwordField setDelegate:self];
     [_loginButton addTarget:self action:@selector(auth) forControlEvents:UIControlEventTouchUpInside];
     [_skipButton addTarget:self action:@selector(avoidLogin) forControlEvents:UIControlEventTouchUpInside];
+    [_registrationButton addTarget:self action:@selector(registration) forControlEvents:UIControlEventTouchUpInside];
+
+    UIToolbar *numberToolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 50)];
+    numberToolbar.barStyle = UIBarStyleDefault;
+    numberToolbar.items    = @[[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil],
+                               [[UIBarButtonItem alloc] initWithTitle:@"Готово" style:UIBarButtonItemStyleDone target:self action:@selector(doneWithNumberPad)]];
+    [numberToolbar sizeToFit];
+    _loginField.inputAccessoryView    = numberToolbar;
+    _passwordField.inputAccessoryView = numberToolbar;
+
+    registrationAlertView = [[UIAlertView alloc]initWithTitle:@"Регистрация"
+                                                      message:@"Вы будете перенаправлены на форму регистрации форума forum.moto.msk.ru. Для регистрации потребуется указать номер телефона и ввести присланный по СМС код"
+                                                     delegate:self
+                                            cancelButtonTitle:@"Отмена"
+                                            otherButtonTitles:@"ОК", nil];
+    
+    userNotFountAlertView = [[UIAlertView alloc] initWithTitle:@"Ошибка авторизации"
+                                                       message:@"Пользователь с такими логином и паролем не найден"
+                                                      delegate:self
+                                             cancelButtonTitle:@"Отмена"
+                                             otherButtonTitles:@"Войти анонимно", nil];
+    enterWithoutLogin     = [[UIAlertView alloc] initWithTitle:@"Войти без регистрации?"
+                                                       message:@"Функционал создания событий и сообщений будет недоступен."
+                                                      delegate:self
+                                             cancelButtonTitle:@"Отмена"
+                                             otherButtonTitles:@"Войти", @"Войти и запомнить", nil];
+}
+
+-(void)registration{
+    [registrationAlertView show];
+}
+- (void)keyboardWillShow:(NSNotification *)notification {
+    CGSize keyboardSize = [[notification userInfo][UIKeyboardFrameBeginUserInfoKey] CGRectValue].size;
+    _bottomConstraint.constant = keyboardSize.height / 2;
+}
+
+- (void)keyboardWillHide {
+    _bottomConstraint.constant = 0;
+}
+
+- (void)doneWithNumberPad {
+    [_loginField resignFirstResponder];
+    [_passwordField resignFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
@@ -28,11 +80,11 @@
 
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
-    if ([User isAuthorized]) {
+    if ([User isAuthorized] || [User isAnonymousForever]) {
         [self toListOfAccidents];
     } else {
-        _loginField.text    = [UserSettings login];
-        _passwordField.text = [UserSettings password];
+        _loginField.text    = UserSettings.login;
+        _passwordField.text = UserSettings.password;
     }
 }
 
@@ -41,30 +93,65 @@
     if ([User isAuthorized]) {
         [self toListOfAccidents];
     } else {
-        UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Ошибка авторизации" message:@"Пользователь с такими логином и паролем не найден" preferredStyle:UIAlertControllerStyleAlert];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"Закрыть" style:UIAlertActionStyleDefault handler:nil]];
-        [alertController addAction:[UIAlertAction actionWithTitle:@"Войти анонимно" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-            [self avoidLogin];
-        }]];
-        [self presentViewController:alertController animated:YES completion:nil];
+
+        [userNotFountAlertView show];
     }
 }
 
 - (void)avoidLogin {
-    UIAlertController *alertController = [UIAlertController alertControllerWithTitle:@"Войти без регистрации?" message:@"Функционал создания событий и сообщений будет недоступен." preferredStyle:UIAlertControllerStyleAlert];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"Отмена" style:UIAlertActionStyleDefault handler:nil]];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"Войти" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [User setAnonymous];
-        [self toListOfAccidents];
-    }]];
-    [alertController addAction:[UIAlertAction actionWithTitle:@"Всегда входить без регистрации" style:UIAlertActionStyleDefault handler:^(UIAlertAction *action) {
-        [User setAnonymousForever];
-        [self toListOfAccidents];
-    }]];
-    [self presentViewController:alertController animated:YES completion:nil];
+    [enterWithoutLogin show];
 }
 
 - (void)toListOfAccidents {
-    [self performSegueWithIdentifier:@"leaveLogin" sender:nil];
+    UIStoryboard     *createAccStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *initial             = [createAccStoryboard instantiateInitialViewController];
+    [self presentViewController:initial animated:YES completion:nil];
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [textField resignFirstResponder];
+    return YES;
+}
+
+- (void)alertView:(UIAlertView *)theAlert clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if ([theAlert isEqual:userNotFountAlertView]) {
+        [userNotFountAlertView setHidden:YES];
+        switch (buttonIndex) {
+            case 0:
+                break;
+            case 1:
+                [self avoidLogin];
+                break;
+            default:
+                break;
+        }
+    }
+    if ([theAlert isEqual:enterWithoutLogin]) {
+        [enterWithoutLogin setHidden:YES];
+        switch (buttonIndex) {
+            case 0:
+                break;
+            case 1:
+                [User setAnonymous];
+                [self toListOfAccidents];
+                break;
+            case 2:
+                [User setAnonymousForever];
+                [self toListOfAccidents];
+                break;
+            default:
+                break;
+        }
+    }
+    if([theAlert isEqual:registrationAlertView]){
+        switch (buttonIndex){
+            case 0:
+                break;
+            case 1:
+                [self performSegueWithIdentifier:@"toRegistration" sender:nil];
+            default:
+                break;
+        }
+    }
 }
 @end

@@ -12,4 +12,5 @@
 
 @interface Marker : MKPointAnnotation
 @property (assign, nonatomic) enum AccidentType type;
+@property(strong, nonatomic) NSString * accId;
 @end

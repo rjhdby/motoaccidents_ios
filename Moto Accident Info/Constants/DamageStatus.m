@@ -43,7 +43,8 @@
 
 + (NSString *)stringForStatus:(enum DamageStatus)status {
     if (status == MS_UNKNOWN) {
-        return @"Неизвестно";
+//        return @"Неизвестно";
+        return @"";
     } else if (status == MS_NONE) {
         return @"Без травм";
     } else if (status == MS_LIGHT) {

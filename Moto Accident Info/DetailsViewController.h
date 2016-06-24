@@ -12,19 +12,23 @@
 @class MessageCell;
 @class OwnMessageCell;
 
-@interface DetailsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, LocationUpdateSubscriber>
-@property (strong, nonatomic) IBOutlet UILabel *ageLabel;
-@property (strong, nonatomic) IBOutlet UILabel *distanceLabel;
-@property (strong, nonatomic) IBOutlet UILabel *addressLabel;
-@property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (strong, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) IBOutlet UIButton *sendMessageButton;
-@property (strong, nonatomic) IBOutlet UITextField *messageField;
-@property (strong, nonatomic) IBOutlet UILabel *typeLabel;
-@property (strong, nonatomic) IBOutlet UILabel *damageLabel;
-@property (strong, nonatomic) IBOutlet UILabel *ownerLabel;
+@interface DetailsViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, LocationUpdateSubscriber, UITextFieldDelegate, UIAlertViewDelegate>
+@property(strong, nonatomic) IBOutlet UILabel            *ageLabel;
+@property(strong, nonatomic) IBOutlet UILabel            *distanceLabel;
+@property(strong, nonatomic) IBOutlet UILabel            *addressLabel;
+@property(strong, nonatomic) IBOutlet UILabel            *descriptionLabel;
+@property(strong, nonatomic) IBOutlet UITableView        *tableView;
+@property(strong, nonatomic) IBOutlet UIButton           *sendMessageButton;
+@property(strong, nonatomic) IBOutlet UITextField        *messageField;
+@property(strong, nonatomic) IBOutlet UILabel            *typeLabel;
+@property(strong, nonatomic) IBOutlet UILabel            *damageLabel;
+@property(strong, nonatomic) IBOutlet UILabel            *ownerLabel;
+@property(strong, nonatomic) IBOutlet NSLayoutConstraint *bottomConstraint;
 
-@property (strong, nonatomic) NSString *idAcc;
+@property(strong, nonatomic) NSString                 *idAcc;
+@property(strong, nonatomic) IBOutlet UIBarButtonItem *toMapButton;
 
 - (void)updateData;
+
+- (IBAction)toMap:(id)sender;
 @end

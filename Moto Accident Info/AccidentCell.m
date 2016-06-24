@@ -25,13 +25,18 @@
     _accidentType.text  = [AccidentType string:accident.type];
     _damage.text        = [DamageStatus stringForStatus:accident.damage];
     _labelText.text     = accident.text;
-    _messagesCount.text = [NSString stringWithFormat:@"%i", [accident.messages count]];
+    _messagesCount.text = [NSString stringWithFormat:@"%lu", (unsigned long)[accident.messages count]];
     if ([Content hasUndeadForAccident:accident]) {
-        _messagesCount.textColor = [UIColor blackColor];
+        _messagesCount.textColor = [UIColor redColor];
     } else {
         _messagesCount.textColor = [UIColor grayColor];
     }
     _accId = [NSString stringWithFormat:@"%i", accident.idAcc];
 }
+
+- (NSString *)getId {
+    return _accId;
+}
+
 
 @end

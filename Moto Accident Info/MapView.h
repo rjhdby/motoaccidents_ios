@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <MapKit/MapKit.h>
+#import "CoreViewController.h"
 
-@interface MapView : UIViewController<MKMapViewDelegate>
+@interface MapView : CoreViewController<MKMapViewDelegate>
 @property (strong, nonatomic) IBOutlet MKMapView *mapView;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *toUserButton;
 - (void)renewMarkers;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *createAccidentButton;
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *callButton;
+@property (strong, nonatomic) NSString *idAcc;
 
 @end

@@ -8,16 +8,27 @@
 
 #import <Foundation/Foundation.h>
 #import <CoreLocation/CoreLocation.h>
+
 @interface UserSettings : NSObject
-
-
 + (void)setup;
+
++ (CLLocation *)location;
 
 + (int)alertRadius;
 
 + (int)showRadius;
 
 + (int)maxAge;
+
++ (bool)alertAccidents;
+
++ (bool)alertBreaks;
+
++ (bool)alertSteals;
+
++ (bool)alertOthers;
+
++ (bool)alertHeavy;
 
 + (bool)showAccidents;
 
@@ -37,12 +48,6 @@
 
 + (NSString *)password;
 
-+ (double)lat;
-
-+ (double)lon;
-
-+ (CLLocation *)location;
-
 + (void)alertRadius:(int)radius;
 
 + (void)showRadius:(int)radius;
@@ -60,6 +65,16 @@
 + (void)showHeavy:(bool)visible;
 
 + (void)showFinished:(bool)visible;
+
++ (void)alertAccidents:(bool)value;
+
++ (void)alertBreaks:(bool)value;
+
++ (void)alertSteals:(bool)value;
+
++ (void)alertOthers:(bool)value;
+
++ (void)alertHeavy:(bool)value;
 
 + (void)anonymous:(bool)newAnonymous;
 

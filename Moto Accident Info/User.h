@@ -15,6 +15,8 @@
 
 + (void)authWithLogin:(NSString *)login password:(NSString *)password;
 
++ (void)signOut;
+
 + (enum Role)role;
 
 + (int)userId;
@@ -24,6 +26,8 @@
 + (bool)isAuthorized;
 
 + (void)setAnonymousForever;
+
++ (bool)isAnonymousForever;
 
 + (void)setAnonymous;
 

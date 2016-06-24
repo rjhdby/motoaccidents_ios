@@ -10,8 +10,9 @@
 #import "DecoratedCell.h"
 
 @interface MessageCellWithoutOwner : UITableViewCell <DecoratedCell>
-@property (strong, nonatomic) IBOutlet UILabel *timeLabel;
-@property (strong, nonatomic) IBOutlet UIImageView *innerView;
-@property (strong, nonatomic) IBOutlet UILabel *textLabel;
+@property(strong, nonatomic) IBOutlet UILabel     *timeLabel;
+@property(strong, nonatomic) IBOutlet UIImageView *innerView;
+@property(strong, nonatomic) IBOutlet UILabel     *textLabel;
+@property(nonatomic) NSString                     *msgId;
 
 @end

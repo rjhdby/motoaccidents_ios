@@ -46,7 +46,11 @@
 
 - (NSString *)getDistanceFromUser;
 
+- (Message *)getMessageById:(NSString *)msgId;
+
 - (bool)isVisible;
+
+- (bool)willAlert;
 
 - (bool)isAccident;
 

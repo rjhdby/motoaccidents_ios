@@ -12,4 +12,7 @@
 
 + (void)setup;
 
++ (CGFloat)screenWidth;
+
++ (CGFloat)screenHeight;
 @end

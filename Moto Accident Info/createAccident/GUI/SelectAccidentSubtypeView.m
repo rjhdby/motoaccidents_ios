@@ -31,6 +31,11 @@
     [_motoManButton setSelected:[NewAccidentContent accidentType] == AT_MOTO_MAN];
 
 }
+- (IBAction)cancel:(id)sender {
+    UIStoryboard     *createAccStoryboard = [UIStoryboard storyboardWithName:@"Main" bundle:nil];
+    UIViewController *initial             = [createAccStoryboard instantiateInitialViewController];
+    [self presentViewController:initial animated:YES completion:nil];
+}
 
 - (void)setDamageSelected {
     [_naDamageButton setSelected:[NewAccidentContent damage] == MS_UNKNOWN];

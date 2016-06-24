@@ -14,5 +14,6 @@
 @property(strong, nonatomic) IBOutlet UILabel     *timeLabel;
 @property(strong, nonatomic) IBOutlet UILabel     *textLabel;
 @property(strong, nonatomic) IBOutlet UIImageView *innerView;
+@property(nonatomic) NSString                     *msgId;
 
 @end

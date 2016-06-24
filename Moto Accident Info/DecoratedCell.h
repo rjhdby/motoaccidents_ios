@@ -5,4 +5,6 @@
 
 @protocol DecoratedCell <NSObject>
 - (void)decorateWith:(id)object;
+
+- (NSString *)getId;
 @end
