@@ -11,7 +11,7 @@
 #import "HTTPResponse.h"
 
 @implementation HTTPRequest
-NSString *const ServerURL = @"http://apk.moto.msk.ru/request.php";
+NSString *const ServerURL = @"http://motodtp.info/ios_apk/request.php";
 
 bool async;
 
@@ -27,7 +27,7 @@ bool async;
     for (NSString *key in args) {
         serverAddress = [NSString stringWithFormat:@"%@%@=%@&", serverAddress, key, args[key]];
     }
-    //NSLog(serverAddress);
+    NSLog(@"%@", serverAddress);
     return serverAddress;
 }
 
@@ -38,7 +38,7 @@ bool async;
 
     CFStringRef transform = CFSTR("Any-Hex/Java");
     CFStringTransform((__bridge CFMutableStringRef) convertedString, NULL, transform, YES);
-    //NSLog(convertedString);
+    NSLog(@"%@", convertedString);
     return convertedString;
 }
 
